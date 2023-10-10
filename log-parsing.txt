@@ -1,9 +1,9 @@
-curl -s https://coderbyte.com/api/challenges/logs/web-logs-raw > temp_logs.txt
+curl -s https://mydomain/logs/web-logs-raw > temp_logs.txt
 
 # Loop through each log item
 while read -r line; do
   # Check if the line contains "coderbyte heroku/router"
-  if [[ $line == *"coderbyte heroku/router"* ]]; then
+  if [[ $line == *"mydomain heroku/router"* ]]; then
     # Extract the request_id and fwd values
     request_id=$(echo "$line" | awk '{print $9}')
     fwd=$(echo "$line" | grep -oE 'fwd=[^ ]+' | cut -d= -f2)
